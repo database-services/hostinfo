@@ -39,7 +39,6 @@ def get_load_avg():
 
 def get_cpu_info():
     cpu_info = cpuinfo.get_cpu_info()
-    
     # Collecting information
     cpu_details = {
         'brand': cpu_info.get('brand_raw', 'N/A'),
@@ -90,7 +89,7 @@ def get_net_if_addrs():
 def get_net_if_stats():
     net_if_stats = []
     for iface, stats in psutil.net_if_stats().items():
-        net_if = stats._asdict() 
+        net_if = stats._asdict()
         net_if['name'] = iface
         net_if_stats.append(net_if)
     return net_if_stats
@@ -98,7 +97,7 @@ def get_net_if_stats():
 def get_net_if_connections():
     net_if_connections = []
     for connection in psutil.net_connections():
-        net_conn = connection._asdict() 
+        net_conn = connection._asdict()
         net_conn['local_ip'] = net_conn['laddr'][0]
         net_conn['local_port'] = net_conn['laddr'][1]
         if len(net_conn['raddr']) > 0:
